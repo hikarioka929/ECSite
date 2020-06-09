@@ -18,9 +18,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'top#top'
+    resources :end_users
   end
 
-  resource :end_users
+  resource :end_users do
+    collection do
+      get :confirm
+      delete :cancel
+    end
+  end
 
   root 'items#top'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

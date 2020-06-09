@@ -15,3 +15,104 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.welcome_message {
+    color: floralwhite;
+    margin-top: 13px;
+}
+
+.mypage-msg {
+    margin-bottom: 50px;
+}
+
+.infomsg {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.mypage-table {
+    width: 70%;
+    margin-top: 20px;
+}
+
+.mypage-table th {
+    width: 30%;;
+    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%)
+}
+
+.haisoubtn {
+    margin-left: 20px;
+}
+
+.btn-display {
+    float: left;
+}
+
+.st1 {
+    margin-right: 100px;
+}
+
+.st2 {
+    margin-right: 60px;
+}
+
+.st3 {
+    margin-right: 60px;
+}
+
+.st4 {
+    margin-right: 10px;
+}
+
+.st5 {
+    margin-right: 130px;
+}
+
+.st6 {
+    margin-right: 10px;
+}
+
+.st7 {
+    margin-right: 13px;
+}
+
+.st8 {
+    margin-right: 3px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.btnbtn {
+    margin-left: 100px;
+}
+
+.btn-edit {
+    margin-right: 100px;
+}
+
+.white {
+    color: floralwhite;
+    letter-spacing: 0.1em;
+}
+
+.admin-index-table {
+    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%)
+}
+
+.confirm-msg {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+.confirm-msg2 {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.cancel-btn {
+    text-align: center;
+}

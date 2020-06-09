@@ -1,43 +1,48 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>登録情報編集</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+<%= form_for @end_user, url: end_user_registration_path, method: :patch do |f| %>
+  <div>
+    <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <strong class="st1">名前</strong>
+    <span class="st8">(姓)</span>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <span class="st7">(名)</span>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <strong class="st2">フリガナ</strong>
+    <span>(セイ)</span>
+    <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
+    <span>(メイ)</span>
+    <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="field">
+    <strong class="st3">メールアドレス</strong>
+    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+
+  <div class="field">
+    <strong class="st4">郵便番号(ハイフンなし)</strong>
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+  </div>
+
+  <div class="field">
+    <strong class="st5">住所</strong>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
+    <strong class="st6">電話番号(ハイフンなし)</strong>
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+  <%= f.submit "編集内容を保存する", class: "btn btn-info btn-display btn-edit" %>
+
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= button_to "退会する", confirm_end_users_path, class: "btn btn-danger btn-display", method: :get %>

@@ -4,6 +4,8 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  acts_as_paranoid
+
   with_options presence: true do
     validates :last_name
     validates :first_name
