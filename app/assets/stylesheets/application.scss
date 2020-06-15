@@ -36,7 +36,7 @@
 }
 
 .mypage-table th {
-    width: 30%;;
+    width: 30%;
     background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%)
 }
 
@@ -115,4 +115,69 @@
 
 .cancel-btn {
     text-align: center;
+}
+
+.add-button {
+    margin-right: 20px;
+}
+
+.new-genre {
+    margin: 50px 0px 30px 0px;
+}
+
+.roundbtn{
+    width:40px;
+    height:40px;
+    background: #ffb6c1;
+    border-radius:100%;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.roundmsg {
+    color: floralwhite;
+    font-size: 30px;
+}
+
+.roundmsg:hover {
+    color: floralwhite;
+    text-decoration: none;
+}
+
+.submsg {
+    font-size: 20px;
+}
+
+.indexitem {
+    margin: 30px;
+}
+
+.item {
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    color: #565656;
+    background: #ffeaea;
+    box-shadow: 0px 0px 0px 10px #ffeaea;
+    border: dashed 2px #ffc3c3;
+    border-radius: 8px;
+}
+
+.str1 {
+    margin-right: 40px;
+}
+
+.str2 {
+    margin-right: 12px;
+}
+
+.str3 {
+    margin-right: 28px;
+}
+
+.str4 {
+    margin-right: 14px;
+}
+
+.subbtn {
+    margin-top: 200px;
 }

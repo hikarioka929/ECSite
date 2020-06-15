@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'top#top'
     resources :end_users
+    resources :items
+    resources :genres, only: [:index,:create,:edit,:update]
   end
 
   resource :end_users do
@@ -29,5 +31,6 @@ Rails.application.routes.draw do
   end
 
   root 'items#top'
+  resources :items, only: [:index,:show]
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
