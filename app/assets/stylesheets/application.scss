@@ -16,6 +16,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 .welcome_message {
     color: floralwhite;
     margin-top: 13px;
@@ -180,4 +192,8 @@
 
 .subbtn {
     margin-top: 200px;
+}
+
+.showitem {
+    margin-bottom: 30px;
 }
