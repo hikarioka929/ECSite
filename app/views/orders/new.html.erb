@@ -3,7 +3,8 @@
 <%= form_with url: confirm_orders_path, local: true do |f| %>
 
 <h4><span class="background">支払い方法</span></h4>
-<%= f.collection_radio_buttons :peyment, Order.peyments_i18n, :first, :last %>
+<%= f.radio_button :peyment,0, checked: "checked" %>クレジットカード
+<%= f.radio_button :peyment,1 %>銀行振込
 
 <h4><span class="background">お届け先</span></h4>
 <%= f.radio_button :address_option,0, checked: "checked" %>ご自身の住所

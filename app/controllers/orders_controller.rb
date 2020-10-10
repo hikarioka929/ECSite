@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
         #3.カートに入れた商品の情報
         @end_user = current_end_user
         @order = Order.new
-        @order.peyment = params[:peyment]
+        @order.peyment = params[:peyment].to_i
         if params[:address_option] == "0"
             @order.post_code = current_end_user.post_code
             @order.address = current_end_user.address
