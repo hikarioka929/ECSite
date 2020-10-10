@@ -18,7 +18,7 @@ class Order < ApplicationRecord
     def total_fee
         sum = 0
         self.order_details.each do |order_detail|
-            sum += order_detail.price * order_detail.amount
+            sum += (order_detail.price * 1.08).round * order_detail.amount
         end
         return sum
     end
