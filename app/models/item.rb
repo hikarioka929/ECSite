@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items
   attachment :image
+  has_many :order_details
 end

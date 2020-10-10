@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-xs-8">
+        <h1>注文履歴詳細</h1>
+
+        <div>
+            <strong>購入者</strong>
+            <span><%= @order.end_user.last_name %><%= @order.end_user.first_name %></span>
+        </div>
+
+        <div>
+            <strong>配送先</strong>
+            <span><%= @order.post_code %></span>
+            <span><%= @order.address %></span>
+            <span><%= @order.name %></span>
+        </div>
+
+        <div>
+            <strong>支払い方法</strong>
+            <span><%= @order.peyment_i18n %></span>
+        </div>
+
+        <div class="order-status">
+            <%= form_with model: [:admin, @order], local: true do |f| %>
+                <strong>注文ステータス</strong>
+                <%= f.select :order_status, [['入金待ち',0], ['入金確認',1], ['製作中',2], ['発送準備中',3], ['発送済み',4]], :prompt => :order_status %>
+                <%= f.submit "更新", class: "btn btn-info" %>
+            <% end %>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="admin-index-table white">商品名</th>
+                    <th class="admin-index-table white">単価（税込）</th>
+                    <th class="admin-index-table white">数量</th>
+                    <th class="admin-index-table white">小計</th>
+                    <th class="admin-index-table white">製作ステータス</th>
+                    <th class="admin-index-table white"></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @order_details.each do |order_detail| %>
+                <tr>
+                    <th><%= order_detail.item.name %></th>
+                    <td><%= order_detail.item.price %></td>
+                    <td><%= order_detail.amount %></td>
+                    <td><%= order_detail.price * order_detail.amount %></td>
+                    <td>
+                        <%= form_with model: [:admin, order_detail], url:admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
+                        <%= f.select :product_status, [['着手不可',0], ['製作待ち',1], ['製作中',2], ['製作完了',3]], :prompt => :product_status %>
+                    </td>
+                    <td><%= f.submit "更新", class: "btn btn-info" %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-4">
+        <table class="table table-bordered mypage-table order-detail">
+                <thead>
+                    <tr>
+                        <th class="white">商品合計</th>
+                        <td><%= @order.total_fee %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">送料</th>
+                        <td><%= @order.postage %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">請求金額合計</th>
+                        <td><%= @order.total_fee + @order.postage %></td>
+                    </tr>
+                </thead>
+            </table>
+    </div>
+</div>

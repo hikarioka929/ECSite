@@ -16,7 +16,9 @@
 
                     <%= form_with model: @cart_item, local: true do |f| %>
                         <%= f.hidden_field :item_id, value: @item.id %>
-                        <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+                        <% if end_user_signed_in? %>
+                            <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+                        <% end %>
                         <%= f.number_field :amount, min: 1 %>
                         <%= f.submit 'カートに入れる', class: "btn btn-info" %>
                     <% end %>

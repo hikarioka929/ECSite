@@ -66,3 +66,5 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'paranoia'
+gem 'enum_help'
+gem 'rails-i18n', '~> 5.1'

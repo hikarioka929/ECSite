@@ -1,0 +1,29 @@
+<h1 class="marginb">注文情報入力</h1>
+
+<%= form_with url: confirm_orders_path, local: true do |f| %>
+
+<h4><span class="background">支払い方法</span></h4>
+<%= f.collection_radio_buttons :peyment, Order.peyments_i18n, :first, :last %>
+
+<h4><span class="background">お届け先</span></h4>
+<%= f.radio_button :address_option,0, checked: "checked" %>ご自身の住所
+<div class="marginb">
+    <%= @end_user.post_code %>
+    <%= @end_user.address %>
+    <%= @end_user.last_name %>
+    <%= @end_user.first_name %>
+</div>
+
+<%= f.radio_button :address_option,1 %>登録済住所から選択
+<div class="marginb">
+    <%= f.collection_select :address, @end_user.addresses.all, :id, :address_all, :prompt => "選択してください" %>
+</div>
+
+<%= f.radio_button :address_option,2 %>新しいお届け先
+<p>郵便番号（ハイフンなし）<%= f.text_field :post_code %></p>
+<p><span class="marginr">住所</span><%= f.text_field :address %></p>
+<p><span class="marginr">宛名</span><%= f.text_field :name %></p>
+
+    <%= f.submit "確認画面に進む", class: "btn btn-success" %>
+
+<% end %>
