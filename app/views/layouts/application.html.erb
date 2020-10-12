@@ -28,7 +28,7 @@
             <div class="marginl">
               <%= form_tag(admin_items_path,:method => 'get') do %>
                 <%= text_field_tag :search %>
-                <%= submit_tag '検索', :name => nil %>
+                <%= submit_tag '🔎', :name => nil, class: "btn-info" %>
               <% end %>
             </div>
           </ul>
