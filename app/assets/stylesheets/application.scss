@@ -110,7 +110,11 @@
 }
 
 .admin-index-table {
-    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%)
+    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%);
+}
+
+.border-rad {
+    border-radius: 10px;
 }
 
 .confirm-msg {
@@ -144,6 +148,7 @@
     border-radius:100%;
     float: right;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .roundmsg {
