@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="application.scss">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="mypage-msg">マイページ</h1>
+            <strong class="infomsg">登録情報</strong>
+            <%= link_to edit_end_user_registration_path do %><button type="button" class="btn btn-info">編集する</button><% end %>
+            &emsp;
+            <%= link_to do %><button type="button" class="btn btn-info">パスワードを変更する</button><% end %>
+
+            <table class="table table-bordered mypage-table">
+                <thead>
+                    <tr>
+                        <th class="white">氏名</th>
+                        <td><%= current_end_user.last_name %> <%= current_end_user.first_name %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">カナ</th>
+                        <td><%= current_end_user.kana_last_name %> <%= current_end_user.kana_first_name %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">郵便番号</th>
+                        <td><%= current_end_user.post_code %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">住所</th>
+                        <td><%= current_end_user.address %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">電話番号</th>
+                        <td><%= current_end_user.phone_number %></td>
+                    </tr>
+                    <tr>
+                        <th class="white">メールアドレス</th>
+                        <td><%= current_end_user.email %></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <strong class="infomsg">配送先</strong>
+            <%= link_to do %><button type="button" class="btn btn-info haisoubtn">配送先</button><% end %>
+            <br>&emsp;</br>
+            <strong class="infomsg">注文履歴</strong>
+            <%= link_to do %><button type="button" class="btn btn-info">注文履歴</button><% end %>
+    </body>
+</html>
