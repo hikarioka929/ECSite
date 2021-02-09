@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="application.scss">
+    </head>
+    <body>
+        <div class="container">
+            <h1>商品一覧</h1>
+            <div class="roundbtn">
+                <%= link_to "＋", new_admin_item_path, class: "roundmsg" %>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="admin-index-table white">商品ID</th>
+                        <th class="admin-index-table white">商品名</th>
+                        <th class="admin-index-table white">税抜き価格</th>
+                        <th class="admin-index-table white">ジャンル</th>
+                        <th class="admin-index-table white">ステータス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @items.each do |item| %>
+                    <tr>
+                        <th><%= item.id %></th>
+                        <td><%= item.name %></td>
+                        <td><%= item.price %></td>
+                        <td><%= item.genre.name %></td>
+                        <td>
+                            <% if item.is_sale == false %>
+                                <p>販売停止中</p>
+                            <% else %>
+                                <p>販売中</p>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="application.scss">
+    </head>
+    <body>
+        <div class="container">
+            <h1>商品新規登録</h1>
+            <div class="row">
+                <%= form_with model: [:admin, @item], local: true do |f| %>
+                    <div class="col-sm-4">
+                        
+                        <%= f.attachment_field :image, placefolder: "商品画像" %>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><strong class="str1">商品名</strong>
+                        <%= f.text_field :name %></p>
+
+                        <p><strong class="str2">商品説明文</strong>
+                        <%= f.text_area :introduction %></p>
+
+                        <p><strong class="str3">ジャンル</strong>
+                        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "選択してください" %></p>
+
+                        <p><strong class="str4">税抜き価格</strong>
+                        <%= f.text_field :price %>円</p>
+
+                        <p><strong>販売ステータス</strong>
+                        <%= f.select :is_sale, [['無効',0], ['有効',1]], :prompt => "選択してください" %></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <%= f.submit '新規登録', class: "btn btn-info subbtn" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </body>
+</html>

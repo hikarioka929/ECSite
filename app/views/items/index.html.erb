@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="application.scss">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="items">
+                <h1>商品一覧<span class="submsg">(全<%= @items.count %>件)</span></h1>
+                    <% @items.each do |item| %>
+                        <%= link_to item_path(item.id) do %>
+                            <div class="col-xs-2 indexitem">
+                                <%= attachment_image_tag item, :image, fallback: "noimage.jpeg", size: "200x150", class: "item" %>
+                                <span class="item">
+                                    <%= item.name %>
+                                    ¥<%= item.price %>
+                                </span>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
