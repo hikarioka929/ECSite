@@ -2,7 +2,7 @@
 
 class EndUsers::EndUsers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -14,15 +14,18 @@ class EndUsers::EndUsers::RegistrationsController < Devise::RegistrationsControl
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @end_user = EndUser.find(current_end_user.id)
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @end_user = EndUser.find(current_end_user.id)
+    if @end_user.update(end_user_params)
+      redirect_to end_users_path(current_end_user)
+    else
+      render :edit
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -59,4 +62,18 @@ class EndUsers::EndUsers::RegistrationsController < Devise::RegistrationsControl
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:post_code,:address])
+  end
+
+  def end_user_params
+    params.require(:end_user).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:post_code,:address)
+  end
 end
