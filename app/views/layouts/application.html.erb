@@ -10,6 +10,44 @@
   </head>
 
   <body>
+
+  <header>
+    <nav class="navbar navbar-default", style="background-color:#ffb6c1;">
+    <div class="container">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+        <% if end_user_signed_in? %>
+          <a class="navbar-brand navbar-left" href="/">LOGO</a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "マイページ", end_users_path %></li>
+            <li><a href="#">商品一覧</a></li>
+            <li><a href="#">カート</a></li>
+            <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+          </ul>
+        <% elsif admin_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">商品一覧</a></li>
+            <li><a href="#">会員一覧</a></li>
+            <li><a href="#">注文履歴一覧</a></li>
+            <li><a href="#">ジャンル一覧</a></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <a class="navbar-brand navbar-left" href="/">LOGO</a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">商品一覧</a></li>
+            <li><%= link_to "新規登録", new_end_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_end_user_session_path %></li>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+  </header>
+
+    <div class="container">
     <%= yield %>
+    </div>
+    </div>
   </body>
 </html>
