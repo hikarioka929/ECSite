@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :end_users
     resources :items
     resources :genres, only: [:index,:create,:edit,:update]
+    resources :orders
+    resources :order_details, only: [:update]
   end
 
   resource :end_users do
@@ -32,5 +34,14 @@ Rails.application.routes.draw do
 
   root 'items#top'
   resources :items, only: [:index,:show]
+  resources :cart_items, only: [:index,:update,:destroy,:create]
+  resources :orders, only: [:new,:create,:index,:show] do
+    collection do
+      get :confirm
+      post :confirm
+      get :done
+    end
+  end
+  delete '/cart_items' => 'cart_items#destroy_all', as: 'cart_items_destroy'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

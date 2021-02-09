@@ -1,0 +1,56 @@
+<h1>ショッピングカート</h1>
+<% if CartItem.exists? %>
+<%= link_to "カートを空にする", cart_items_destroy_path, method: :delete, data: {confirm: "カート内商品を全て消去しますか？"}, class: "btn btn-danger", style: "float: right; margin-bottom: 10px;" %>
+
+<table class="table table-bordered mypage-table", style="width: 100%;">
+    <thead>
+        <tr>
+            <th class="white">商品名</th>
+            <th class="white">単価（税込）</th>
+            <th class="white">数量</th>
+            <th class="white">小計</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% total_price = 0 %>
+        <% @cart_items.each do |cart_item| %>
+            <tr>
+                <td>
+                    <%= attachment_image_tag cart_item.item, :image, fallback: "noimage.jpeg", size: "100x75" %>
+                    &emsp;&emsp;<%= cart_item.item.name %>
+                </td>
+                <td><%= (cart_item.item.price * 1.08).round %></td>
+                <td>
+                    <%= form_for(cart_item) do |f| %>
+                        <%= f.number_field :amount, min: 1 %>
+                        <%= f.submit "変更", class: "btn btn-info" %>
+                    <% end %>
+                </td>
+                <td><%= (cart_item.item.price * 1.08 * cart_item.amount).round %></td>
+                <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+            </tr>
+            <% total_price += (cart_item.item.price * 1.08 * cart_item.amount).round %>
+        <% end %>
+    </tbody>
+</table>
+
+<div class="clearfix">
+<%= link_to "買い物を続ける", items_path, class: "btn btn-info" %>
+<table class="table table-bordered", style="width: 200px; float: right;">
+    <thead>
+        <tr>
+            <th class="white", style="background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%);">合計金額</th>
+            <td><%= total_price %></td>
+        </tr>
+    </thead>
+</table>
+</div>
+<div style="text-align: center;">
+<%= link_to "情報入力に進む", new_order_path, class: "btn btn-success neworder" %>
+<% else %>
+<div style="text-align: center;">
+<strong style="font-size: 30px;">カートは空です。</strong>
+</div>
+<%= link_to "買い物を続ける", items_path, class: "btn btn-info" %>
+<% end %>
