@@ -12,11 +12,13 @@
                 <div class="col-xs-7">
                     <h1 class="showitem"><%= @item.name %></h1>
                     <h4><%= @item.introduction %></h4>
-                    <h3>¥<%= @item.price %> (税込)</h3>
+                    <h3>¥<%= (@item.price * 1.08).round %> (税込)</h3>
 
                     <%= form_with model: @cart_item, local: true do |f| %>
                         <%= f.hidden_field :item_id, value: @item.id %>
-                        <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+                        <% if end_user_signed_in? %>
+                            <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+                        <% end %>
                         <%= f.number_field :amount, min: 1 %>
                         <%= f.submit 'カートに入れる', class: "btn btn-info" %>
                     <% end %>

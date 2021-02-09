@@ -110,7 +110,11 @@
 }
 
 .admin-index-table {
-    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%)
+    background-image: linear-gradient(40deg, #eecda3 0%, #ffb6c1 99%);
+}
+
+.border-rad {
+    border-radius: 10px;
 }
 
 .confirm-msg {
@@ -144,6 +148,7 @@
     border-radius:100%;
     float: right;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .roundmsg {
@@ -196,4 +201,34 @@
 
 .showitem {
     margin-bottom: 30px;
+}
+
+.neworder {
+    font-size: 25px;
+}
+
+.order-detail {
+    margin-top: 300px;
+}
+
+.order-status {
+    margin-bottom: 50px;
+}
+
+.background {
+    background-color: #ffc3c3;
+    
+}
+
+.marginb {
+    margin-bottom: 30px;
+}
+
+.marginr {
+    margin-right: 140px;
+}
+
+.marginl {
+    margin-left: 300px;
+    margin-bottom: 10px;
 }

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_161325) do
+ActiveRecord::Schema.define(version: 2020_08_17_174447) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.string "post_code"
+    t.string "address"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -69,6 +78,29 @@ ActiveRecord::Schema.define(version: 2020_07_02_161325) do
     t.boolean "is_sale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "amount"
+    t.integer "price"
+    t.integer "product_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "end_user_id"
+    t.integer "peyment"
+    t.string "post_code"
+    t.string "address"
+    t.string "name"
+    t.integer "postage"
+    t.integer "total_price"
+    t.integer "order_status"
   end
 
 end

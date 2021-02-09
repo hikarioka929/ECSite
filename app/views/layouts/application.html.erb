@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <title>CakeShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,16 +18,22 @@
         <div class="navbar-header">
         </div>
         <% if admin_signed_in? %>
-        <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">NaganoCake</span><% end %>
+        <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">CakeShop</span><% end %>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "商品一覧", admin_items_path %></li>
             <li><%= link_to "会員一覧", admin_end_users_path %></li>
-            <li><a href="#">注文履歴一覧</a></li>
+            <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
             <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <div class="marginl">
+              <%= form_tag(admin_items_path,:method => 'get') do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag '🔎', :name => nil, class: "btn-info" %>
+              <% end %>
+            </div>
           </ul>
         <% elsif end_user_signed_in? %>
-          <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">&nbsp;&nbsp;NaganoCake</span><% end %>
+          <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">&nbsp;&nbsp;CakeShop</span><% end %>
           <ul class="nav navbar-nav navbar-right">
             <li class="welcome_message">ようこそ、<%= current_end_user.last_name %>さん！</li>
             <li><%= link_to "マイページ", end_users_path %></li>
@@ -36,7 +42,7 @@
             <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
           </ul>
         <% else %>
-          <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">NaganoCake</span><% end %>
+          <%= link_to root_path do %><%= image_tag('cake.png', :size => '50x50') %><span style="color:#fffaf0">CakeShop</span><% end %>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "商品一覧", items_path %></li>
             <li><%= link_to "新規登録", new_end_user_registration_path %></li>
