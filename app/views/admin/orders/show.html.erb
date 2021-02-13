@@ -3,8 +3,8 @@
         <h1>注文履歴詳細</h1>
 
         <div>
-            <strong>購入者</strong>
-            <span><%= @order.end_user.last_name %><%= @order.end_user.first_name %></span>
+            <strong>購入者ID</strong>
+            <span><%= @order.end_user_id %></span>
         </div>
 
         <div>
@@ -30,10 +30,8 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th class="admin-index-table white">商品名</th>
-                    <th class="admin-index-table white">単価（税込）</th>
+                    <th class="admin-index-table white">商品ID</th>
                     <th class="admin-index-table white">数量</th>
-                    <th class="admin-index-table white">小計</th>
                     <th class="admin-index-table white">製作ステータス</th>
                     <th class="admin-index-table white"></th>
                 </tr>
@@ -41,10 +39,8 @@
             <tbody>
             <% @order_details.each do |order_detail| %>
                 <tr>
-                    <th><%= order_detail.item.name %></th>
-                    <td><%= (order_detail.item.price * 1.08).round %></td>
+                    <th><%= order_detail.item_id %></th>
                     <td><%= order_detail.amount %></td>
-                    <td><%= (order_detail.price * 1.08).round * order_detail.amount %></td>
                     <td>
                         <%= form_with model: [:admin, order_detail], url:admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
                         <%= f.select :product_status, [['着手不可',0], ['製作待ち',1], ['製作中',2], ['製作完了',3]], :prompt => :product_status %>
