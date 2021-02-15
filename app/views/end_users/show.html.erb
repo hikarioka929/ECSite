@@ -8,9 +8,6 @@
             <h1 class="mypage-msg">マイページ</h1>
             <strong class="infomsg">登録情報</strong>
             <%= link_to edit_end_user_registration_path do %><button type="button" class="btn btn-info">編集する</button><% end %>
-            &emsp;
-            <%= link_to do %><button type="button" class="btn btn-info">パスワードを変更する</button><% end %>
-
             <table class="table table-bordered mypage-table">
                 <thead>
                     <tr>
@@ -39,11 +36,6 @@
                     </tr>
                 </thead>
             </table>
-
-            <strong class="infomsg">配送先</strong>
-            <%= link_to do %><button type="button" class="btn btn-info haisoubtn">配送先</button><% end %>
-            <br>&emsp;</br>
-            <strong class="infomsg">注文履歴</strong>
-            <%= link_to do %><button type="button" class="btn btn-info">注文履歴</button><% end %>
+        </div>
     </body>
 </html>

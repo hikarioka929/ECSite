@@ -4,8 +4,7 @@ class OrdersController < ApplicationController
     def new
         @end_user = current_end_user
     end
-    
-    
+
     def confirm
         #表示させたい内容
         #1.支払い方法
