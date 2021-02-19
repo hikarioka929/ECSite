@@ -232,3 +232,16 @@
     margin-left: 300px;
     margin-bottom: 10px;
 }
+
+.toppage {
+    text-align: center;
+    & h1 {
+        margin: 50px 0 70px 0;
+    }
+    & h2 {
+        margin-bottom: 50px;
+    }
+    & .toppagebtn {
+        font-size: 30px;
+    }
+}

@@ -4,8 +4,14 @@
         <link rel="stylesheet" href="application.scss">
     </head>
     <body>
-        <div class="container">
-            <h1>end_user top</h1>
+        <div class="container toppage item">
+            <h1><%= image_tag('ice.png', :size => '50x50') %><%= image_tag('cake.png', :size => '50x50') %>トップページ<%= image_tag('cake.png', :size => '50x50') %><%= image_tag('ice.png', :size => '50x50') %></h1>
+            <h2>
+                このサイトは、スイーツ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+            </h2>
+            <%= link_to "商品一覧ページへ", items_path, class: "btn btn-info toppagebtn" %>
         </div>
     </body>
 </html>
